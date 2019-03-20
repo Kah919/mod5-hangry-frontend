@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import RecipeCard from "./RecipeCard";
 import reducer from "../Redux/reducer";
 import SideBar from "./SideBar";
+import { connect } from "react-redux";
 
 class Home extends Component {
   state = {
@@ -27,14 +28,13 @@ class Home extends Component {
 
   mapRecipe = () => {
     return this.state.found_recipes.map(recipe => { // right now recipe is all the recipes
-      console.log("inside mapRecipe", recipe.recipeName)
+      // console.log("inside mapRecipe", recipe.recipeName)
       return <RecipeCard recipe={recipe} key={recipe.id} />
     })
   }
 
   render() {
     // console.log(this.state.found_recipes)
-    console.log()
     return(
       <div className="home_container">
         <div className="">
@@ -57,4 +57,11 @@ class Home extends Component {
   }
 }
 
-export default Home;
+const mapStateToProps = (state) => {
+  console.log("inside mapStateToProps", state)
+  return {
+    username: state.username
+  }
+}
+
+export default connect(mapStateToProps)(Home);

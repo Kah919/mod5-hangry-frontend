@@ -1,10 +1,11 @@
 import React, { Component } from "react";
-import { Button, Header, Image, Modal, List, Rating } from 'semantic-ui-react'
+import { Button, Header, Image, Modal, List, Rating } from 'semantic-ui-react';
+import Scraping from "./Scraping";
 
 class RecipeCard extends Component {
 
-  ingredients = this.props.recipe.ingredients.map(ingredient => {
-    return <li>{ingredient}</li>
+  ingredients = this.props.recipe.ingredients.map((ingredient, idx) => {
+    return <li key={idx}>{ingredient}</li>
   })
 
   card = () => {
@@ -24,11 +25,21 @@ class RecipeCard extends Component {
     return `https://yummly.com/recipe/${this.props.recipe.id}#directions`
   }
 
+  // cheerio = () => {
+  //   let cheerio = requie('cheerio')
+  //   let $ = cheerio.load(`https://yummly.com/recipe/${this.props.recipe.id}#directions`)
+  //
+  //   let instructions = [];
+  //
+  //
+  // }
+
   render() {
     // console.log(this.state)
     return(
       <div className="recipe_card">
         <Modal trigger={this.card()}>
+          <Scraping url={this.instructions}/>
           <Modal.Header className="card_header">{this.props.recipe.recipeName} {this.rating()} </Modal.Header>
           <Modal.Content image>
             <Image wrapped size='big' src={this.props.recipe.imageUrlsBySize["90"].replace("90-c", "600-c")} />

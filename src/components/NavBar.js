@@ -1,9 +1,8 @@
 import React, { Component } from "react";
 import {BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
 
-class NavBar extends Component {
-
-  logged = () => {
+const NavBar = props => {
+  let logged = () => {
     if(localStorage.token) {
       return (
         <div className="navigation">
@@ -20,17 +19,11 @@ class NavBar extends Component {
     }
   }
 
-  render() {
-    return(
-      <div>
-      <BrowserRouter>
-        <Switch>
-          {this.logged()}
-        </Switch>
-      </BrowserRouter>
-      </div>
-    )
-  }
+  return(
+    <div>
+      {logged()}
+    </div>
+  )
 }
 
 export default NavBar;

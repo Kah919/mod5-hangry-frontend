@@ -173,8 +173,8 @@ input {
 
 .search_div {
   margin: 0 auto;
-  padding: 50px;
-  width: 60%;
+  padding: 70px;
+  width: 40%;
   display: flex;
 }
 
@@ -230,6 +230,7 @@ p {
 
 .polaroid p {
   padding: 8px;
+  font-family: 'Indie Flower', cursive;
 }
 
 .recipe_card {
@@ -243,4 +244,12 @@ p {
 .ingredients {
   border-bottom: 1px solid #ADD8E6;
   font-size: 16px;
+}
+
+.sidebar_username {
+  text-align: center;
+  border-bottom: 1px solid #ADD8E6;
+  color: #003333;
+  letter-spacing: 2px;
+  padding: 10px;
 }

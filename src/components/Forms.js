@@ -30,6 +30,7 @@ class Forms extends Component {
 
   render() {
     console.log(this.props.name)
+    console.log("staaate", this.props.username);
     return (
       <div>
       <NavBar />
@@ -73,10 +74,16 @@ class Forms extends Component {
       </div>
     )
   }
+}
 
+const mapStateToProps = (state) => {
+  return {
+    username: state.username
+  }
 }
 
 const mapDispatchToProps = (dispatch) => { // mapDispatchToProps sends info, arg of dispatch
+  console.log("this is from dispatch", dispatch)
   return { // returns and object usually name of what you want to return as a key
     loginFetch: (loginInfo) => dispatch(loginFetch(loginInfo)), // dispatch the imported data ususally same as key before
     signUpFetch: (signUpInfo) => dispatch(signUpFetch(signUpInfo))
@@ -84,4 +91,4 @@ const mapDispatchToProps = (dispatch) => { // mapDispatchToProps sends info, arg
   }
 }
 
-export default connect(null, mapDispatchToProps)(Forms);
+export default connect(mapStateToProps, mapDispatchToProps)(Forms);

@@ -1,13 +1,25 @@
 import React, { Component } from "react";
-import {BrowserRouter, Route, Switch, Redirect, Link } from "react-router-dom";
+import { Link } from "react-router-dom";
+import { connect } from "react-redux";
+import { usernameFetch} from "../Redux/actions"
+
 
 const SideBar = props => {
+  console.log("username from the side bar", props.username);
+
+  let componentDidMount = () => {
+    props.usernameFetch()
+  }
+
   let logged = () => {
     if(localStorage.token) {
       return (
         <div>
+          <h2 className="sidebar_username">{props.username}</h2>
           <Link to="/profile">Profile</Link>
-          <Link to="/" onClick={() => localStorage.removeItem("token")} >Sign Out</Link>
+          <Link to="/category">Categories</Link>
+          <Link to="/follows">Follows</Link>
+          <Link to="/login" onClick={() => localStorage.removeItem("token")} >Sign Out</Link>
         </div>
       )
     } else {
@@ -27,4 +39,16 @@ const SideBar = props => {
   )
 }
 
-export default SideBar;
+const mapStateToProps = (state) => {
+  return {
+    username: state.username
+  }
+}
+
+const mapDispatchToProps = (dispatch) => {
+  return {
+    usernameFetch: () => dispatch(usernameFetch())
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(SideBar);

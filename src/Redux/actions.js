@@ -1,5 +1,3 @@
-import { Redirect } from "react-router-dom";
-
 export const logged = (obj) => {
   return {
     type: "LOGGED",
@@ -22,12 +20,12 @@ export const loginFetch = userObj => {
         .then(res => res.json())
         .then(data => {
             localStorage.setItem("token", data.jwt);
+            // console.log("data from action", data)
             // this.setState({user: data.user}, console.log("This is the data at login", data))
             dispatch(logged(data.user.username))
           // }
         })
       }
-
 }
 
 export const signup = obj => {
@@ -51,5 +49,24 @@ export const signUpFetch = userObj => {
     })
     .then(res => res.json())
     .then(console.log)
+  }
+}
+
+export const usernameFetch = userObj => {
+  return (dispatch) => {
+    if (localStorage.token) {
+      fetch("http://localhost:3000/api/v1/profile", {
+        method: "GET",
+        headers: {
+          "Accept" : "application/json",
+          "Content-Type" : "application/json",
+          "Authorization" : `Bearer ${localStorage.token}`
+        }
+      })
+      .then(res => res.json())
+      .then(data => {
+        dispatch(logged(data.user.username))
+      })
+    }
   }
 }
