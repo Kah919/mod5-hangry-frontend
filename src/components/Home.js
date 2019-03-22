@@ -3,6 +3,7 @@ import RecipeCard from "./RecipeCard";
 import reducer from "../Redux/reducer";
 import SideBar from "./SideBar";
 import { connect } from "react-redux";
+import {browserHistory} from 'react-router';
 
 class Home extends Component {
   state = {
@@ -25,6 +26,11 @@ class Home extends Component {
       })
     })
   }
+
+  // addToFavorite = (recipe) => { // decided to use redux
+  //   console.log("adding to favorite", recipe)
+  //   console.log(this.props.user)
+  // }
 
   mapRecipe = () => {
     return this.state.found_recipes.map(recipe => { // right now recipe is all the recipes
@@ -60,7 +66,7 @@ class Home extends Component {
 const mapStateToProps = (state) => {
   console.log("inside mapStateToProps", state)
   return {
-    username: state.username
+    user: state.user
   }
 }
 

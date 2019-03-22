@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Button, Header, Image, Modal, List, Rating } from 'semantic-ui-react';
 import Scraping from "./Scraping";
+import { connect } from "react-redux";
 
 class RecipeCard extends Component {
 
@@ -25,17 +26,24 @@ class RecipeCard extends Component {
     return `https://yummly.com/recipe/${this.props.recipe.id}#directions`
   }
 
-  // cheerio = () => {
-  //   let cheerio = requie('cheerio')
-  //   let $ = cheerio.load(`https://yummly.com/recipe/${this.props.recipe.id}#directions`)
-  //
-  //   let instructions = [];
-  //
-  //
-  // }
+  addToFavorite = (recipe) => { // this now has the information of the card so now we can make a fetch
+    console.log(recipe)
+    fetch("http://localhost:3000/api/v1/favorites", {
+      method: "POST",
+      headers: {
+        "Accept" : "application/json",
+        "Content-Type" : "application/json"
+      },
+      body: JSON.stringify({
+        user_id: this.props.user.id,
+        recipe_id: recipe.id
+      })
+    })
+    .then(res => res.json())
+    .then(console.log)
+  }
 
   render() {
-    // console.log(this.state)
     return(
       <div className="recipe_card">
         <Modal trigger={this.card()}>
@@ -52,6 +60,7 @@ class RecipeCard extends Component {
                 <p>Cook Time: {Math.floor(this.props.recipe.totalTimeInSeconds / 60)} minutes</p>
                 </div>
                 <a target="_blank" href={this.instructions()}>Instructions</a>
+                <button onClick={() => this.addToFavorite(this.props.recipe)}> Favorite</button>
             </Modal.Description>
           </Modal.Content>
         </Modal>
@@ -60,7 +69,10 @@ class RecipeCard extends Component {
   }
 }
 
-// <a href=`https://yummly.com/recipe/${this.props.recipe.id}`>Google</a>
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
 
-
-export default RecipeCard;
+export default connect(mapStateToProps)(RecipeCard);

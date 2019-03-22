@@ -8,7 +8,8 @@ import NavBar from "./NavBar";
 class Forms extends Component {
   state = {
     username: "",
-    password: ""
+    password: "",
+    redirected: false
   }
 
   user_input = event => {
@@ -25,16 +26,22 @@ class Forms extends Component {
       this.props.signUpFetch(this.state)
     } else {
       this.props.loginFetch(this.state);
+      if(localStorage.token) {
+        this.setState({
+          redirected: true
+        })
+      }
     }
   }
 
   render() {
-    console.log(this.props.name)
-    console.log("staaate", this.props.username);
+    if(this.state.redirected) {
+      return <Redirect to="/" />
+    }
+
     return (
       <div>
       <NavBar />
-
       <div className="login_container">
         <div className="container">
           <div className="d-flex justify-content-center h-100">
