@@ -29,7 +29,7 @@ const SideBar = props => {
         <div>
           <h2 className="sidebar_username">{props.user.username}</h2>
           <Link to="/profile">Profile</Link>
-          <Link to="/category">Categories</Link>
+          <Link to="/categories">Categories</Link>
           <Link to="/follows">Follows</Link>
           <Link to="/favorites">Favorites</Link>
 

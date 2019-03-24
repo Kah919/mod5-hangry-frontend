@@ -1,9 +1,11 @@
 import React, { Component } from "react";
+import Category from "./Category";
 
 class CategoriesContainer extends Component {
 
   state = {
-    categories: []
+    categories: [],
+    category: ""
   }
 
   componentDidMount = () => {
@@ -18,14 +20,31 @@ class CategoriesContainer extends Component {
 
   categories = () => {
     return this.state.categories.map(category => {
-      return <li>{category.name}</li>
+      return <div className="category_card" onClick={name => this.categoryPage(category.name)}>
+          <img src={category.img} alt="null" />
+          <h1>{category.name}</h1>
+      </div>
     })
   }
 
+  categoryPage = (category) => {
+    this.setState({
+      category: category.toLowerCase()
+    })
+  }
+
+  displayCategory = () => {
+    if(this.state.category) {
+      return <Category category={this.state.category}/>
+    } else {
+      return (<div className="category_container">{this.categories()}</div>)
+    }
+  }
+
   render() {
-    console.log("from categories", this.categories())
+
     return (
-      <div>{this.categories()}</div>
+      <div>{this.displayCategory()}</div>
     )
   }
 }

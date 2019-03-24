@@ -278,3 +278,45 @@ p {
 .carousel-indicators {
   margin-bottom: 50px;
 }
+
+/* this is the start of Category */
+/* .category_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  height: 100vh;
+  width: 100vw;
+  margin: 0 auto;
+  background-color: #232323;
+}
+
+.category_card {
+  border: 1px solid pink;
+  width: 90%;
+  height: 90%;
+  margin: auto;
+  vertical-align: middle;
+  text-align: center;
+  line-height: 250px;
+} */
+.category_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.category_card {
+  margin: 0 auto;
+  padding: 10px;
+}
+
+.category_card h1 {
+  text-align: center;
+  letter-spacing: 2px;
+}
+
+.category_card img {
+  width: 30vw;
+  height: 30vh;
+}
+
+
+/* this is the end of Category */

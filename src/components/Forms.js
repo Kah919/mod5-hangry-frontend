@@ -19,8 +19,6 @@ class Forms extends Component {
     })
   }
 
-  // this.props.loginFetch(this.state)
-
   submit = () => {
     if(this.props.name === "Sign Up") {
       this.props.signUpFetch(this.state)

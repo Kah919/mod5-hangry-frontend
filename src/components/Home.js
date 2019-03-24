@@ -27,11 +27,6 @@ class Home extends Component {
     })
   }
 
-  // addToFavorite = (recipe) => { // decided to use redux
-  //   console.log("adding to favorite", recipe)
-  //   console.log(this.props.user)
-  // }
-
   mapRecipe = () => {
     return this.state.found_recipes.map(recipe => { // right now recipe is all the recipes
       // console.log("inside mapRecipe", recipe.recipeName)
@@ -40,7 +35,6 @@ class Home extends Component {
   }
 
   render() {
-    // console.log(this.state.found_recipes)
     return(
       <div className="home_container">
         <div className="">
@@ -51,7 +45,7 @@ class Home extends Component {
           <div className="search_div">
             <input className="search_ingredients form-control" placeholder="Enter Your Ingredients Here..." value={this.state.ingredients} onChange={this.ingredients}/>
             <span className="input-group-btn">
-              <button  onClick={this.search} className="btn btn-info btn-search" type="button"><i className="fa fa-search fa-fw"></i> Search</button>
+              <button onClick={this.search} className="btn btn-info btn-search" type="button"><i className="fa fa-search fa-fw"></i> Search</button>
             </span>
           </div>
           <div className="recipe_container">
