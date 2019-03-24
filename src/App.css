@@ -252,3 +252,29 @@ p {
   letter-spacing: 2px;
   padding: 10px;
 }
+
+.item img {
+  width: 100%;
+}
+
+.carousel_name {
+  text-align: center;
+  letter-spacing: 3px;
+  color: white;
+  margin-top: 40px;
+  padding: 20px;
+}
+
+.favorite_container {
+  width: 40%;
+  margin: 0 auto;
+}
+
+.favorite_body {
+  background-color: #232323;
+  height: 100vh;
+}
+
+.carousel-indicators {
+  margin-bottom: 50px;
+}

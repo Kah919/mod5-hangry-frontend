@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { Button, Header, Image, Modal, List, Rating } from 'semantic-ui-react';
 import Scraping from "./Scraping";
 import { connect } from "react-redux";
+import { addToFavoriteFetch } from "../Redux/actions";
 
 class RecipeCard extends Component {
 
@@ -26,23 +27,6 @@ class RecipeCard extends Component {
     return `https://yummly.com/recipe/${this.props.recipe.id}#directions`
   }
 
-  addToFavorite = (recipe) => { // this now has the information of the card so now we can make a fetch
-    console.log(recipe)
-    fetch("http://localhost:3000/api/v1/favorites", {
-      method: "POST",
-      headers: {
-        "Accept" : "application/json",
-        "Content-Type" : "application/json"
-      },
-      body: JSON.stringify({
-        user_id: this.props.user.id,
-        recipe_id: recipe.id
-      })
-    })
-    .then(res => res.json())
-    .then(console.log)
-  }
-
   render() {
     return(
       <div className="recipe_card">
@@ -60,7 +44,7 @@ class RecipeCard extends Component {
                 <p>Cook Time: {Math.floor(this.props.recipe.totalTimeInSeconds / 60)} minutes</p>
                 </div>
                 <a target="_blank" href={this.instructions()}>Instructions</a>
-                <button onClick={() => this.addToFavorite(this.props.recipe)}> Favorite</button>
+                <button onClick={() => this.props.addToFavoriteFetch(this.props.recipe)}> Favorite</button>
             </Modal.Description>
           </Modal.Content>
         </Modal>
@@ -75,4 +59,10 @@ const mapStateToProps = state => {
   }
 }
 
-export default connect(mapStateToProps)(RecipeCard);
+const mapDispatchToProps = dispatch => {
+  return {
+    addToFavoriteFetch: (recipe) => dispatch(addToFavoriteFetch(recipe))
+  }
+}
+
+export default connect(mapStateToProps, mapDispatchToProps)(RecipeCard);

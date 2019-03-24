@@ -78,22 +78,26 @@ export const addToFavorite = (obj) => { // writing some code here lets see if it
   }
 }
 
-// export const addToFavoriteFetch = () => { // need to pass in the user id and the recipe id
-//   return (dispatch) => {
-//     fetch("http://localhost:3000/api/v1/favorites", {
-//       method: "POST",
-//       headers: {
-//         "Accept" : "application/json",
-//         "Content-Type" : "application/json"
-//       },
-//       body: JSON.stringify({
-//         user_id: , // put the user id here
-//         recipe_id: // put the recipe id here
-//       })
-//     })
-//     .then(res => res.json())
-//     .then(data => {
-//       dispatch(addToFavorite(data))
-//     })
-//   }
-// }
+export const addToFavoriteFetch = (recipe) => { // this now has the information of the card so now we can make a fetch
+  return (dispatch) => {
+    fetch("http://localhost:3000/api/v1/recipes", {
+      method: "POST",
+      headers: {
+        "Accept" : "application/json",
+        "Content-Type" : "application/json",
+        "Authorization" : `Bearer ${localStorage.token}`
+      },
+      body: JSON.stringify({
+        ingredients: {recipe: recipe.ingredients},
+        recipeName: recipe.recipeName,
+        imageUrlsBySize: recipe.imageUrlsBySize["90"].replace("90-c", "600-c"),
+        totalTimeInSeconds: recipe.totalTimeInSeconds / 60,
+        rating: recipe.rating
+      })
+    })
+    .then(res => res.json())
+    .then(data => {
+      dispatch(logged(data.user))
+    })
+  }
+}

@@ -7,6 +7,10 @@ import { Provider, connect } from "react-redux";
 import Home from "./components/Home";
 import NavBar from "./components/NavBar";
 import Users from "./components/Users";
+import Favorites from "./components/Favorites";
+import SideBar from "./components/SideBar";
+import CategoriesContainer from "./components/CategoriesContainer";
+
 import store from "./store";
 import { usernameFetch } from "./Redux/actions";
 
@@ -20,6 +24,8 @@ class App extends Component {
       <Router>
       <div>
         <Switch>
+          <Route path="/favorites" render={() => <Favorites />} />
+          <Route path="/categories" render={() => <CategoriesContainer />} />
           <Route path="/signup" render={() => <Forms name="Sign Up" />} />
           <Route path="/login" render={() => <Forms name="Login" />} />
           <Route path="/users" render={() => <Users />} />

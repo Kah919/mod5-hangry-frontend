@@ -35,7 +35,7 @@ class Forms extends Component {
   }
 
   render() {
-    if(this.state.redirected) {
+    if(localStorage.token) {
       return <Redirect to="/" />
     }
 
@@ -85,7 +85,7 @@ class Forms extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    username: state.username
+    user: state.user
   }
 }
 

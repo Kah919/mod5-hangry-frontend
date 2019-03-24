@@ -31,6 +31,8 @@ const SideBar = props => {
           <Link to="/profile">Profile</Link>
           <Link to="/category">Categories</Link>
           <Link to="/follows">Follows</Link>
+          <Link to="/favorites">Favorites</Link>
+
 
           <Link to="/login" onClick={() => localStorage.removeItem("token")} >Sign Out</Link>
         </div>
