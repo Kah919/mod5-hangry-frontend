@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import Category from "./Category";
+import LeftSideBar from "./LeftSideBar";
+
 
 class CategoriesContainer extends Component {
 
@@ -20,7 +22,7 @@ class CategoriesContainer extends Component {
 
   categories = () => {
     return this.state.categories.map(category => {
-      return <div className="category_card" onClick={name => this.categoryPage(category.name)}>
+      return <div className="category_card"  key={category.id} onClick={name => this.categoryPage(category.name)}>
           <img src={category.img} alt="null" />
           <h1>{category.name}</h1>
       </div>
@@ -42,9 +44,16 @@ class CategoriesContainer extends Component {
   }
 
   render() {
-
     return (
-      <div>{this.displayCategory()}</div>
+      <div className="category_background">
+        <h1 className="category_header"> Categories </h1>
+        <div className="app">
+          <div className="leftsidebar_container">
+            <LeftSideBar />
+          </div>
+          <div>{this.displayCategory()}</div>
+        </div>
+      </div>
     )
   }
 }

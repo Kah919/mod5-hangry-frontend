@@ -4,6 +4,7 @@ import reducer from "../Redux/reducer";
 import SideBar from "./SideBar";
 import { connect } from "react-redux";
 import {browserHistory} from 'react-router';
+import LeftSideBar from "./LeftSideBar";
 
 class Home extends Component {
   state = {
@@ -36,22 +37,25 @@ class Home extends Component {
 
   render() {
     return(
-      <div className="home_container">
-        <div className="">
-          <SideBar />
+      <div className="app">
+        <div className="leftsidebar_container">
+          <LeftSideBar />
         </div>
 
-        <div className="home">
-          <div className="search_div">
-            <input className="search_ingredients form-control" placeholder="Enter Your Ingredients Here..." value={this.state.ingredients} onChange={this.ingredients}/>
-            <span className="input-group-btn">
-              <button onClick={this.search} className="btn btn-info btn-search" type="button"><i className="fa fa-search fa-fw"></i> Search</button>
-            </span>
+          <div className="home">
+
+            <div className="search_div">
+              <input className="search_ingredients form-control" placeholder="Enter Your Ingredients Here..." value={this.state.ingredients} onChange={this.ingredients}/>
+                <span className="input-group-btn">
+                  <button onClick={this.search} className="btn btn-info btn-search" type="button"><i className="fa fa-search fa-fw"></i> Search</button>
+                </span>
+            </div>
+
+            <div className="recipe_container">
+              {this.mapRecipe()}
+            </div>
+
           </div>
-          <div className="recipe_container">
-            {this.mapRecipe()}
-          </div>
-        </div>
       </div>
     )
   }

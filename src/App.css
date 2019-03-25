@@ -119,6 +119,11 @@ input:focus{
   width: 100%;
 }
 
+.home_container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+}
+
 .navigation li {
   float: right;
   font-size: 20px;
@@ -138,11 +143,6 @@ input:focus{
 
 .home {
   text-align: center;
-}
-
-.home_container {
-  display: grid;
-  grid-template-columns: 1fr 6fr;
 }
 
 input {
@@ -260,47 +260,42 @@ p {
 .carousel_name {
   text-align: center;
   letter-spacing: 3px;
-  color: white;
-  margin-top: 40px;
+  color: black;
+  font-size: 28px;
+  margin-top: 20px;
   padding: 20px;
 }
 
 .favorite_container {
-  width: 40%;
+  width: 30%;
   margin: 0 auto;
 }
 
 .favorite_body {
-  background-color: #232323;
-  height: 100vh;
+  background-image: url(./components/foodb.jpg);
+  background-size: 100% 100%;
 }
 
 .carousel-indicators {
   margin-bottom: 50px;
 }
 
-/* this is the start of Category */
-/* .category_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr;
-  height: 100vh;
-  width: 100vw;
-  margin: 0 auto;
-  background-color: #232323;
-}
+/* Start of category */
 
-.category_card {
-  border: 1px solid pink;
-  width: 90%;
-  height: 90%;
-  margin: auto;
-  vertical-align: middle;
-  text-align: center;
-  line-height: 250px;
-} */
 .category_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+}
+
+.category_background {
+  background-image: url(./components/wooden.jpg);
+  background-size: 100% 100%;
+}
+
+.category_header {
+  text-align: center;
+  font-size: 48px;
+  letter-spacing: 5px;
 }
 
 .category_card {
@@ -314,9 +309,95 @@ p {
 }
 
 .category_card img {
-  width: 30vw;
-  height: 30vh;
+  width: 25vw;
+  height: 25vh;
+  border-radius: 2px;
+  box-shadow: 10px 10px 10px #707070;
 }
 
-
 /* this is the end of Category */
+
+/* start of Side bar */
+
+html{
+  scroll-behavior: smooth;
+}
+
+.main_div{
+  height: 100vh;
+}
+
+.left-sidebar{
+  position: fixed;
+  background: none;
+  width: 50px;
+  height: 100vh;
+  left: 0px;
+  top: 0;
+  max-height: 100vh;
+  transition: .5s;
+}
+
+.left-sidebar ul{
+  list-style-type:none;
+  padding: 0;
+  height: 100%;
+  background: #b4daff;
+  border: 1px solid #9bc2cf;
+}
+.left-sidebar ul li{
+  height: 20%;
+  position: relative;
+  display: block;
+}
+.left-sidebar-i{
+  color: #fff;
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  text-align: center;
+  width: 100%;
+  font-size: 20px;
+  transform: translate(-50%,-50%);
+}
+.left-sidebar li:hover{
+  background: #2abbff;
+}
+@media screen and (max-height: 350px) {
+  .left-sidebar{
+    height: 100vh;
+    bottom: 0px;
+  }
+}
+
+.left-sidebar li {
+  position: absolute;
+  left: -25px;
+  transition: 0.3s;
+  padding: 15px;
+  width: 100px;
+  /* text-decoration: none; */
+  font-size: 20px;
+  color: white;
+  border-radius: 0 5px 5px 0;
+}
+
+.left-sidebar li:hover {
+  left: 0;
+}
+
+.app {
+  display: grid;
+  grid-template-columns: 1fr 40fr;
+  height: 100vh;
+}
+
+.leftsidebar_container {
+  display: grid;
+}
+
+/* end of Side Bar */
+
+.userlist {
+  text-align: center;
+}

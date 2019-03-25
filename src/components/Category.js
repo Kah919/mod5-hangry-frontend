@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import RecipeCard from "./RecipeCard";
+import LeftSideBar from "./LeftSideBar";
 
 class Category extends Component {
   state = {
@@ -27,9 +28,13 @@ class Category extends Component {
   }
 
   render() {
-    console.log("this is the category fetch", this.state.found_recipes)
     return (
-      <div className="category_container">{this.recipeIsEmpty()}</div>
+      <div className="app">
+        <div className="leftsidebar_container">
+          <LeftSideBar />
+        </div>
+        <div className="category_container">{this.recipeIsEmpty()}</div>
+      </div>
     )
   }
 }
