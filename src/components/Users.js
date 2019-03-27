@@ -1,51 +1,55 @@
 import React, { Component } from "react";
 import UserCard from "./UserCard";
 import LeftSideBar from "./LeftSideBar";
-import { addFriendFetch } from "../Redux/actions";
+import { addFriendFetch, usersListFetch } from "../Redux/actions";
 import { connect } from "react-redux";
 import FriendsList from "./FriendsList";
 
 
+
 class Users extends Component {
   state = {
-    users: []
+    users: [],
+    // added: false
   }
 
   componentDidMount = () => {
-    fetch("http://localhost:3000/api/v1/users")
-      .then(res => res.json())
-      .then(users => {
-        this.setState({
-          users
-        })
-      })
+    this.props.usersListFetch()
   }
 
   add = friendInfo => {
     console.log(friendInfo)
     let info = {myId: this.props.user.id, friendInfo: friendInfo.user.id}
     this.props.addFriendFetch(info);
-    console.log(info)
+    // this.props.filteredListFetch(info);
+    // console.log(info)
+    // this.setState({
+    //   added: !this.state.added
+    // })
   }
 
   filteredUsers = () => {
-    return this.state.users.filter(user => {
-
-      if(user.id === this.props.user.id) {
-        return false
-      } else if (user.followers.length >= 1 ) { // if the user has followers
-        let contains = true
-        user.followers.forEach(u => { // go through each of the follower
-          if(u.id === this.props.user.id) { // if follower's id is same as user id
-            contains = false; // set contains to false
-          }
-        })
-        return contains
-      } else {
-        return user
-      }
-
+    return this.props.users.filter(user => {
+      return !this.props.user.followeds.find(followed => followed.id === user.id)
     })
+
+    // return this.props.users.filter(user => {
+    //
+    //   if(user.id === this.props.user.id) {
+    //     return false
+    //   } else if (user.followers.length >= 1 ) { // if the user has followers
+    //     let contains = true
+    //     user.followers.forEach(u => { // go through each of the follower
+    //       if(u.id === this.props.user.id) { // if follower's id is same as user id
+    //         contains = false; // set contains to false
+    //       }
+    //     })
+    //     return contains
+    //   } else {
+    //     return user
+    //   }
+    //
+    // })
   }
 
   usercard = () => {
@@ -62,6 +66,7 @@ class Users extends Component {
   }
 
   render() {
+    console.log("inside the users", this.props.users)
     return (
       <div className="app">
         <div className="leftsidebar_container"> <LeftSideBar /> </div>
@@ -76,13 +81,15 @@ class Users extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    users: state.users
   }
 }
 
 const mapDispatchToProps = (dispatch) => {
   return {
-    addFriendFetch: (info) => dispatch(addFriendFetch(info))
+    addFriendFetch: (info) => dispatch(addFriendFetch(info)),
+    usersListFetch: () => dispatch(usersListFetch())
   }
 }
 

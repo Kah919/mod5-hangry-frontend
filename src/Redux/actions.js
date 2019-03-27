@@ -71,6 +71,29 @@ export const usernameFetch = userObj => {
   }
 }
 
+export const usersList = (users) => {
+  return {
+    type: "USERS_LIST",
+    payload: users
+  }
+}
+
+export const usersListFetch = () => {
+  return (dispatch) => {
+    fetch("http://localhost:3000/api/v1/users")
+      .then(res => res.json())
+      .then(users => {
+        dispatch(usersList(users))
+      })
+  }
+}
+
+// export const filteredListFetch = () => {
+//   return (dispatch) => {
+//     fetch("http://localhost:3000/api/v1/users")
+//   }
+// }
+
 export const addToFavorite = (obj) => { // writing some code here lets see if it works
   return { // will be sending this to the reducer
     type: "ADD_FAVORITE",
@@ -116,11 +139,18 @@ export const addFriendFetch = (info) => {
       headers: {
         "Content-Type" : "application/json",
         "Accept" : "application/json",
+        "Authorization" : `Bearer ${localStorage.token}`
       },
       body: JSON.stringify({
         follower_id: info.myId,
         followed_id: info.friendInfo
       })
+    })
+    .then(res => res.json())
+    .then(data => {
+      console.log("..........", data);
+      dispatch(addFriend(data.followed))
+      dispatch(logged(data.user))
     })
   }
 }

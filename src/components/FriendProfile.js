@@ -61,10 +61,7 @@ class FriendProfile extends Component {
       })
     }
 
-
-
   render() {
-    // console.log("this is from the friend profile", this.props.friend)
     return(
       this.props.friend.recipes ? this.showInfo() : null
     )

@@ -1,5 +1,6 @@
 const initialState = {
   user: {},
+  users: [],
   login: false,
   signup: false,
   friend: {}
@@ -16,6 +17,9 @@ export default function reducer(state = initialState, action) {
       // console.log("Inside the reducer this is the username:", ...state)
       return {...state}
 
+    case "USERS_LIST":
+      return {...state, users: action.payload}
+
     case "SET_REDIRECT_STATE":
       return {...state, [action.payload]:true}
 
@@ -29,7 +33,8 @@ export default function reducer(state = initialState, action) {
       return {...state}
 
     case "ADD_FRIEND":
-      return {...state}
+    console.log("console log from the add friend reducer", action.payload)
+      return {...state, friend: action.payload}
 
     case "SHOW_FRIEND":
       return {...state, friend: action.payload}
