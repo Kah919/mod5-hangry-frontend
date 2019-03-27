@@ -39,8 +39,8 @@ class Forms extends Component {
 
     return (
       <div>
-      <NavBar />
       <div className="login_container">
+      <NavBar />
         <div className="container">
           <div className="d-flex justify-content-center h-100">
             <div className="card">

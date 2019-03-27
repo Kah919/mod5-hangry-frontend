@@ -124,3 +124,21 @@ export const addFriendFetch = (info) => {
     })
   }
 }
+
+export const showFriend = (userInfo) => {
+  return {
+    type: "SHOW_FRIEND",
+    payload: userInfo
+  }
+}
+
+export const showFriendFetch = (userId) => {
+  console.log("This is from the action printing id:", userId)
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/users/${userId}`)
+    .then(res => res.json())
+    .then(userInfo => {
+      dispatch(showFriend(userInfo))
+    })
+  }
+}

@@ -1,7 +1,8 @@
 const initialState = {
   user: {},
   login: false,
-  signup: false
+  signup: false,
+  friend: {}
 }
 
 export default function reducer(state = initialState, action) {
@@ -29,6 +30,9 @@ export default function reducer(state = initialState, action) {
 
     case "ADD_FRIEND":
       return {...state}
+
+    case "SHOW_FRIEND":
+      return {...state, friend: action.payload}
 
     default:
     return state;

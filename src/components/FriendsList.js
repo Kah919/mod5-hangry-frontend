@@ -3,10 +3,17 @@ import { connect } from "react-redux";
 import nutella from "./nutella.gif";
 import FriendProfile from "./FriendProfile";
 
+
 class FriendsList extends Component {
+  state = {
+    id: null
+  }
 
   viewUser = (followed) => {
-    return <FriendProfile followed={followed} />
+    console.log(followed)
+    this.setState({
+      id: followed.id
+    })
   }
 
   list = () => {
@@ -23,7 +30,11 @@ class FriendsList extends Component {
   }
 
   render() {
-    return this.props.user.followeds ? this.friendListColumn() : <img className="nutella"src={nutella} alt="nutella"/>
+    console.log("this is the id state", this.state.id)
+    return this.state.id ?
+      <FriendProfile userId={this.state.id}/>
+      :
+      this.props.user.followeds ? this.friendListColumn() : <img className="nutella"src={nutella} alt="nutella"/>
   }
 }
 

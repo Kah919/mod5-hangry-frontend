@@ -14,7 +14,7 @@ class LeftSideBar extends Component {
           <li><Link to="/categories"><i className="fas fa-folder-open left-sidebar-i"></i></Link></li>
           <li><Link to="/favorites"><i className="far fa-heart left-sidebar-i"></i></Link></li>
           <li><Link to="/users"><i className="fas fa-user-friends left-sidebar-i"></i></Link></li>
-          <li><Link to="/login"><i className="fas fa-code left-sidebar-i"></i></Link></li>
+          <li onClick={() => localStorage.removeItem("token")} ><Link to="/login"><i className="fas fa-code left-sidebar-i"></i></Link></li>
         </ul>
       </div>
     )

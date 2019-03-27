@@ -10,7 +10,8 @@ import Users from "./components/Users";
 import Favorites from "./components/Favorites";
 import SideBar from "./components/SideBar";
 import CategoriesContainer from "./components/CategoriesContainer";
-import LeftSideBar from "./components/LeftSideBar"
+import LeftSideBar from "./components/LeftSideBar";
+import FriendProfile from "./components/FriendProfile";
 import store from "./store";
 import { usernameFetch } from "./Redux/actions";
 
@@ -25,6 +26,7 @@ class App extends Component {
         <Router>
             <Switch>
               <Route path="/favorites" render={() => <Favorites />} />
+              <Route path="/friend" render={() => <FriendProfile />} />
               <Route path="/categories" render={() => <CategoriesContainer />} />
               <Route path="/signup" render={() => <Forms name="Sign Up" />} />
               <Route path="/login" render={() => <Forms name="Login" />} />
@@ -45,7 +47,7 @@ const mapDispatchToProps = (dispatch) => {
 
 const mapStateToProps = (state) =>{
   return{
-    username: state.username
+    user: state.username
   }
 }
 
