@@ -47,7 +47,7 @@ class CategoriesContainer extends Component {
     return (
       <div className="category_background">
         <h1 className="category_header"> Categories </h1>
-        <div className="app">
+        <div className="app home">
           <div className="leftsidebar_container">
             <LeftSideBar />
           </div>

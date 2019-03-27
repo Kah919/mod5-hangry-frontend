@@ -1,26 +1,9 @@
-/* .App {
-  text-align: center;
-}
 
+/*
 .App-logo {
   animation: App-logo-spin infinite 20s linear;
   height: 40vmin;
   pointer-events: none;
-}
-
-.App-header {
-  background-color: #282c34;
-  min-height: 100vh;
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  font-size: calc(10px + 2vmin);
-  color: white;
-}
-
-.App-link {
-  color: #61dafb;
 }
 
 @keyframes App-logo-spin {
@@ -112,16 +95,15 @@ input:focus{
   background-repeat: no-repeat;
   height: 100vh;
   font-family: 'Montserrat', sans-serif;
+  overflow-y: scroll;
+
 }
 
 .home {
   height: 100vh;
   width: 100%;
-}
-
-.home_container {
-  display: grid;
-  grid-template-columns: 1fr 1fr;
+  text-align: center;
+  overflow-y: scroll;
 }
 
 .navigation li {
@@ -138,10 +120,6 @@ input:focus{
 
 .search_ingredients {
   width: 100%;
-  text-align: center;
-}
-
-.home {
   text-align: center;
 }
 
@@ -172,9 +150,9 @@ input {
 }
 
 .search_div {
-  margin: 0 auto;
-  padding: 70px;
-  width: 40%;
+  margin: 20% auto;
+  padding: 80px;
+  width: 60%;
   display: flex;
 }
 
@@ -274,6 +252,7 @@ p {
 .favorite_body {
   background-image: url(./components/foodb.jpg);
   background-size: 100% 100%;
+  /* overflow-y: scroll; */
 }
 
 .carousel-indicators {
@@ -285,11 +264,17 @@ p {
 .category_container {
   display: grid;
   grid-template-columns: 1fr 1fr 1fr;
+  margin: 0 auto;
 }
 
 .category_background {
   background-image: url(./components/wooden.jpg);
-  background-size: 100% 100%;
+  /* background-size: 100% 100%; */
+  background-size: cover;
+  /* height: 100vh; */
+  color: #55342b;
+  /* overflow-y: scroll; */
+
 }
 
 .category_header {
@@ -399,5 +384,37 @@ html{
 /* end of Side Bar */
 
 .userlist {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
   text-align: center;
+  background-color: #eef7fa;
+  background-image: url(./components/buddyimg.jpg);
+  background-size: 100% 100%;
+  overflow-y: scroll;
+  color: white;
+  letter-spacing: 5px;
+}
+
+.userlist p {
+  color: white;
+}
+
+.addfriends {
+
+}
+
+.friendslist {
+}
+
+.people_container {
+  width: 60%;
+  margin: 50% auto;
+  border-radius: 5px;
+  padding: 40px;
+  box-shadow: 10px 10px 10px #707070;
+}
+
+.nutella {
+  margin: 50% auto;
+  border-radius: 100%;
 }

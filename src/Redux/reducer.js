@@ -27,6 +27,9 @@ export default function reducer(state = initialState, action) {
       console.log("adding to favorites from inside the reducer")
       return {...state}
 
+    case "ADD_FRIEND":
+      return {...state}
+
     default:
     return state;
   }

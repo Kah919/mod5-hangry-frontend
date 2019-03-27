@@ -1,0 +1,36 @@
+import React, { Component } from "react";
+import { connect } from "react-redux";
+import nutella from "./nutella.gif";
+import FriendProfile from "./FriendProfile";
+
+class FriendsList extends Component {
+
+  viewUser = (followed) => {
+    return <FriendProfile followed={followed} />
+  }
+
+  list = () => {
+    return this.props.user.followeds.map(followed => {
+      return <p className="followed_container" onClick={() => this.viewUser(followed)} >{followed.username}</p>
+    })
+  }
+
+  friendListColumn = () => {
+    return <div className="people_container">
+      <h1>Friends List</h1>
+      <div>{this.list()}</div>
+    </div>
+  }
+
+  render() {
+    return this.props.user.followeds ? this.friendListColumn() : <img className="nutella"src={nutella} alt="nutella"/>
+  }
+}
+
+const mapStateToProps = state => {
+  return {
+    user: state.user
+  }
+}
+
+export default connect(mapStateToProps)(FriendsList);

@@ -101,3 +101,26 @@ export const addToFavoriteFetch = (recipe) => { // this now has the information 
     })
   }
 }
+
+export const addFriend = (info) => { // writing some code here lets see if it works
+  return { // will be sending this to the reducer
+    type: "ADD_FRIEND",
+    payload: info
+  }
+}
+
+export const addFriendFetch = (info) => {
+  return (dispatch) => {
+    fetch(`http://localhost:3000/api/v1/follows`, {
+      method: "POST",
+      headers: {
+        "Content-Type" : "application/json",
+        "Accept" : "application/json",
+      },
+      body: JSON.stringify({
+        follower_id: info.myId,
+        followed_id: info.friendInfo
+      })
+    })
+  }
+}

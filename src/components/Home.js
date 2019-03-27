@@ -41,9 +41,7 @@ class Home extends Component {
         <div className="leftsidebar_container">
           <LeftSideBar />
         </div>
-
           <div className="home">
-
             <div className="search_div">
               <input className="search_ingredients form-control" placeholder="Enter Your Ingredients Here..." value={this.state.ingredients} onChange={this.ingredients}/>
                 <span className="input-group-btn">
