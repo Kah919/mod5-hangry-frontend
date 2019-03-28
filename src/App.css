@@ -420,12 +420,17 @@ html{
   font-size: 48px;
 }
 
+/* Friends Carousel Start */
 .nutella {
   margin: 50% auto;
   border-radius: 100%;
 }
 
-/* .friend_profile_container {
-  height: 1000px;
-  background-color: red;
-} */
+.friend_carousel {
+  width: 50%;
+}
+
+.carousel_recipe_name {
+  color: white;
+}
+/* Friends Carousel End */

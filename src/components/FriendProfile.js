@@ -11,29 +11,29 @@ class FriendProfile extends Component {
 
   showInfo = () => {
     return (
-      <div >
-      <div className="favorite_container">
-      <ol className="carousel-indicators">
-      {this.props.friend.recipes ? this.dataSlide() : null}
-      </ol>
-        <h1 className="carousel_name"> {this.props.friend.username}'s Favorite! </h1>
-        <div id="myCarousel" className="carousel slide" data-ride="carousel">
+      <div>
+        <div className="favorite_container friend_carousel">
+        <ol className="carousel-indicators">
+        {this.props.friend.recipes ? this.dataSlide() : null}
+        </ol>
+          <h1 className="carousel_name carousel_recipe_name"> {this.props.friend.username}'s Favorite! </h1>
+          <div id="myCarousel" className="carousel slide" data-ride="carousel">
 
 
-          <div className="carousel-inner">
-            {this.props.friend.recipes ? this.favoriteRecipes() : null}
+            <div className="carousel-inner">
+              {this.props.friend.recipes ? this.favoriteRecipes() : null}
+            </div>
+
+            <a className="left carousel-control" href="#myCarousel" data-slide="prev">
+              <span className="glyphicon glyphicon-chevron-left"></span>
+              <span className="sr-only">Previous</span>
+            </a>
+            <a className="right carousel-control" href="#myCarousel" data-slide="next">
+              <span className="glyphicon glyphicon-chevron-right"></span>
+              <span className="sr-only">Next</span>
+            </a>
           </div>
-
-          <a className="left carousel-control" href="#myCarousel" data-slide="prev">
-            <span className="glyphicon glyphicon-chevron-left"></span>
-            <span className="sr-only">Previous</span>
-          </a>
-          <a className="right carousel-control" href="#myCarousel" data-slide="next">
-            <span className="glyphicon glyphicon-chevron-right"></span>
-            <span className="sr-only">Next</span>
-          </a>
         </div>
-      </div>
       </div>
     )
   }
@@ -49,7 +49,7 @@ class FriendProfile extends Component {
       return (
         <div className={id == 0 ? "item active": "item"}>
         <img src={recipe.imageUrlsBySize} alt="no pics"/>
-          <h1 className="carousel_name">{recipe.recipeName}</h1>
+          <h1 className="carousel_name carousel_recipe_name">{recipe.recipeName}</h1>
         </div>
       )
     })

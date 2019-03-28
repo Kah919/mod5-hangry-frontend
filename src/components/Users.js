@@ -4,8 +4,7 @@ import LeftSideBar from "./LeftSideBar";
 import { addFriendFetch, usersListFetch } from "../Redux/actions";
 import { connect } from "react-redux";
 import FriendsList from "./FriendsList";
-
-
+import nutella from "./nutella.gif";
 
 class Users extends Component {
   state = {
@@ -21,35 +20,12 @@ class Users extends Component {
     console.log(friendInfo)
     let info = {myId: this.props.user.id, friendInfo: friendInfo.user.id}
     this.props.addFriendFetch(info);
-    // this.props.filteredListFetch(info);
-    // console.log(info)
-    // this.setState({
-    //   added: !this.state.added
-    // })
   }
 
   filteredUsers = () => {
     return this.props.users.filter(user => {
-      return !this.props.user.followeds.find(followed => followed.id === user.id)
+      return this.props.user.followeds ? !this.props.user.followeds.find(followed => followed.id === user.id) : <img className="nutella"src={nutella} alt="nutella"/>
     })
-
-    // return this.props.users.filter(user => {
-    //
-    //   if(user.id === this.props.user.id) {
-    //     return false
-    //   } else if (user.followers.length >= 1 ) { // if the user has followers
-    //     let contains = true
-    //     user.followers.forEach(u => { // go through each of the follower
-    //       if(u.id === this.props.user.id) { // if follower's id is same as user id
-    //         contains = false; // set contains to false
-    //       }
-    //     })
-    //     return contains
-    //   } else {
-    //     return user
-    //   }
-    //
-    // })
   }
 
   usercard = () => {
