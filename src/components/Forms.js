@@ -4,13 +4,19 @@ import { loginFetch } from "../Redux/actions";
 import { signUpFetch } from "../Redux/actions";
 import { connect } from "react-redux";
 import NavBar from "./NavBar";
+import troll from "./troll.jpg";
+import screaming from "./screaming.mp3";
+
 
 class Forms extends Component {
   state = {
     username: "",
     password: "",
     redirected: false
+
+
   }
+
 
   user_input = event => {
     // console.log(event.target.name)
@@ -32,6 +38,13 @@ class Forms extends Component {
     }
   }
 
+  screaming = new Audio(screaming);
+
+  invalid = () => {
+    this.screaming.play()
+    return <img src={troll} alt=":'("/>
+  }
+
   render() {
     if(localStorage.token) {
       return <Redirect to="/" />
@@ -44,6 +57,7 @@ class Forms extends Component {
         <div className="container">
           <div className="d-flex justify-content-center h-100">
             <div className="card">
+              {this.props.invalid ? this.invalid() : null }
               <div className="card-header">
                 <h3><span className="h">H</span>ANGRY!!</h3>
                 <div className="d-flex justify-content-end social_icon">
@@ -83,7 +97,8 @@ class Forms extends Component {
 
 const mapStateToProps = (state) => {
   return {
-    user: state.user
+    user: state.user,
+    invalid: state.invalid
   }
 }
 

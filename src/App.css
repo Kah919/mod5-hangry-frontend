@@ -151,7 +151,7 @@ input {
 }
 
 .search_div {
-  margin: 20% auto;
+  margin: -5% auto;
   padding: 80px;
   width: 60%;
   display: flex;
@@ -182,6 +182,7 @@ input {
 
 .sidenav a:hover {
   color: #f1f1f1;
+  transition: background-color 0.5s ease;
 }
 
 .main {
@@ -250,6 +251,10 @@ p {
   margin: 0 auto;
 }
 
+.favorite_container h1 {
+  color: white;
+}
+
 .favorite_body {
   background-image: url(./components/foodb.jpg);
   background-size: 100% 100%;
@@ -258,6 +263,15 @@ p {
 
 .carousel-indicators {
   margin-bottom: 50px;
+}
+
+.carousel_img {
+  border-radius: 100%;
+}
+
+.carousel_img:hover {
+  border: 2px solid white;
+  box-shadow: 10px 10px 10px #707070;
 }
 
 /* Start of category */
@@ -299,6 +313,11 @@ p {
   height: 25vh;
   border-radius: 2px;
   box-shadow: 10px 10px 10px #707070;
+}
+
+.category_card img:hover {
+  border: 1px solid white;
+  box-shadow: 20px 20px 20px #707070;
 }
 
 /* this is the end of Category */
@@ -400,12 +419,17 @@ html{
   color: white;
 }
 
-.addfriends {
+.userlist p:hover {
+  transition: color 0.5s ease;
+  color: #ffb3e6;
+}
+
+/* .addfriends {
 
 }
 
 .friendslist {
-}
+} */
 
 .people_container {
   width: 60%;
@@ -428,6 +452,7 @@ html{
 
 .friend_carousel {
   width: 50%;
+  margin-top: 20%;
 }
 
 .carousel_recipe_name {

@@ -5,6 +5,7 @@ import SideBar from "./SideBar";
 import { connect } from "react-redux";
 import {browserHistory} from 'react-router';
 import LeftSideBar from "./LeftSideBar";
+import hangrydef from "./hangrydef.jpg";
 
 class Home extends Component {
   state = {
@@ -42,6 +43,7 @@ class Home extends Component {
           <LeftSideBar />
         </div>
           <div className="home">
+            <img src={hangrydef} alt=":D" />
             <div className="search_div">
               <input className="search_ingredients form-control" placeholder="Enter Your Ingredients Here..." value={this.state.ingredients} onChange={this.ingredients}/>
                 <span className="input-group-btn">

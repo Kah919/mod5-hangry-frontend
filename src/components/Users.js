@@ -24,7 +24,9 @@ class Users extends Component {
 
   filteredUsers = () => {
     return this.props.users.filter(user => {
-      return this.props.user.followeds ? !this.props.user.followeds.find(followed => followed.id === user.id) : <img className="nutella"src={nutella} alt="nutella"/>
+      // console.log("this", user.id)
+      // console.log("filtered", this.props.user.id)
+      return this.props.user.followeds ? !this.props.user.followeds.find(followed => (followed.id === user.id) || (user.id === this.props.user.id)) : <img className="nutella"src={nutella} alt="nutella"/>
     })
   }
 

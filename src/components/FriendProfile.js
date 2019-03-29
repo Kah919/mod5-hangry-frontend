@@ -40,7 +40,7 @@ class FriendProfile extends Component {
 
   dataSlide = () => {
     return this.props.user.recipes.map((recipe, id) => {
-        return (<li data-target="#myCarousel" data-slide-to={id} className={id == 0 ? "active carousel_list": "carousel_list"}></li>)
+        return (<li data-target="#myCarousel" key={id} data-slide-to={id} className={id == 0 ? "active carousel_list": "carousel_list"}></li>)
     })
   }
 

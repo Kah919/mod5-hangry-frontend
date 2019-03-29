@@ -8,7 +8,7 @@ class Favorites extends Component {
     return this.props.user.recipes.map((recipe, id) => {
       return (
         <div className={id == 0 ? "item active": "item"}>
-        <img src={recipe.imageUrlsBySize} alt="no pics"/>
+        <img className="carousel_img" src={recipe.imageUrlsBySize} alt="no pics"/>
             <h1 className="carousel_name">{recipe.recipeName}</h1>
         </div>
       )
@@ -21,6 +21,10 @@ class Favorites extends Component {
     })
   }
 
+  // <ol className="carousel-indicators">
+  // {this.props.user.recipes ? this.dataSlide() : null}
+  // </ol>
+
   render() {
     return(
       <div className="app">
@@ -30,9 +34,7 @@ class Favorites extends Component {
 
         <div className ="favorite_body">
         <div className="favorite_container">
-        <ol className="carousel-indicators">
-        {this.props.user.recipes ? this.dataSlide() : null}
-        </ol>
+
           <h1 className="carousel_name"> {this.props.user.username}'s Favorite! </h1>
           <div id="myCarousel" className="carousel slide" data-ride="carousel">
 

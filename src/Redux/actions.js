@@ -6,6 +6,13 @@ export const logged = (obj) => {
   }
 }
 
+export const invalid = () => {
+  return {
+    type: "INVALID",
+    payload: true
+  }
+}
+
 export const loginFetch = userObj => {
   return (dispatch) => {
         fetch("http://localhost:3000/api/v1/login", {
@@ -20,10 +27,16 @@ export const loginFetch = userObj => {
         })
         .then(res => res.json())
         .then(data => {
-            localStorage.setItem("token", data.jwt);
-            console.log("data from action", data)
-            // this.setState({user: data.user}, console.log("This is the data at login", data))
-            dispatch(logged(data)) //data.user.username
+            if(data.user) {
+              localStorage.setItem("token", data.jwt);
+              console.log("data from action", data)
+              // this.setState({user: data.user}, console.log("This is the data at login", data))
+              dispatch(logged(data.user)) //data.user.username
+              alert(`Welcome back ${data.user.username} 🥢`)
+            } else {
+              alert("No existing user")
+              dispatch(invalid())
+            }
         })
       }
 }
@@ -48,7 +61,7 @@ export const signUpFetch = userObj => {
       })
     })
     .then(res => res.json())
-    .then(console.log)
+    .then(alert("You are now signed up, please log in 🥢"))
   }
 }
 

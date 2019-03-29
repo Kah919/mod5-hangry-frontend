@@ -3,7 +3,8 @@ const initialState = {
   users: [],
   login: false,
   signup: false,
-  friend: {}
+  friend: {},
+  invalid: false
 }
 
 export default function reducer(state = initialState, action) {
@@ -38,6 +39,9 @@ export default function reducer(state = initialState, action) {
 
     case "SHOW_FRIEND":
       return {...state, friend: action.payload}
+
+    case "INVALID":
+      return {...state, invalid: action.payload}
 
     default:
     return state;
