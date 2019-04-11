@@ -167,7 +167,7 @@ export const addFriendFetch = (info) => {
     })
     .then(res => res.json())
     .then(data => {
-      console.log("..........", data);
+      console.log(".......", data);
       dispatch(addFriend(data.followed))
       dispatch(logged(data.user))
     })
