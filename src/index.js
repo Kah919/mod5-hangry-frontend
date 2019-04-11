@@ -10,7 +10,7 @@ import {Provider} from "react-redux"; // caps is a component
 import { createStore, applyMiddleware, compose } from "redux"; // lower is a function
 import reducer from "./Redux/reducer";
 import thunk from "redux-thunk";
-import { composeWithDevTools } from 'redux-devtools-extension';
+// import { composeWithDevTools } from 'redux-devtools-extension';
 import invariant from 'redux-immutable-state-invariant';
 
 
