@@ -13,8 +13,6 @@ class Forms extends Component {
     username: "",
     password: "",
     redirected: false
-
-
   }
 
 
