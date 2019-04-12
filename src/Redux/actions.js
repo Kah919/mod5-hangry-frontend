@@ -1,4 +1,4 @@
-// httpss://chatster-app-api.herokuapp.com
+// https://chatster-app-api.herokuapp.com
 export const logged = (obj) => {
   return {
     type: "LOGGED",
@@ -15,8 +15,8 @@ export const invalid = () => {
 
 export const loginFetch = userObj => {
   return (dispatch) => {
-        // fetch("https://localhost:3000/api/v1/login", {
-        fetch("https://hangry-fapoon.herokuapp.com/api/v1/login", {
+        // fetch("http://localhost:3000/api/v1/login", {
+        fetch("http://hangry-fapoon.herokuapp.com/api/v1/login", {
           method: "POST",
           headers: {
             "Content-Type": "application/json",
@@ -51,8 +51,8 @@ export const signup = obj => {
 
 export const signUpFetch = userObj => {
   return (dispatch) => {
-    // fetch("https://localhost:3000/api/v1/users", {
-    fetch("https://hangry-fapoon.herokuapp.com/api/v1/users", {
+    // fetch("http://localhost:3000/api/v1/users", {
+    fetch("http://hangry-fapoon.herokuapp.com/api/v1/users", {
       method: "POST",
       headers: {
         "Accept" : "application/json",
@@ -70,8 +70,8 @@ export const signUpFetch = userObj => {
 export const usernameFetch = userObj => {
   return (dispatch) => {
     if (localStorage.token) {
-      // fetch("https://localhost:3000/api/v1/profile", {
-      fetch("https://hangry-fapoon.herokuapp.com/api/v1/profile", {
+      // fetch("http://localhost:3000/api/v1/profile", {
+      fetch("http://hangry-fapoon.herokuapp.com/api/v1/profile", {
         method: "GET",
         headers: {
           "Accept" : "application/json",
@@ -96,8 +96,8 @@ export const usersList = (users) => {
 
 export const usersListFetch = () => {
   return (dispatch) => {
-    // fetch("https://localhost:3000/api/v1/users")
-    fetch("https://hangry-fapoon.herokuapp.com/api/v1/users")
+    // fetch("http://localhost:3000/api/v1/users")
+    fetch("http://hangry-fapoon.herokuapp.com/api/v1/users")
       .then(res => res.json())
       .then(users => {
         dispatch(usersList(users))
@@ -107,7 +107,7 @@ export const usersListFetch = () => {
 
 // export const filteredListFetch = () => {
 //   return (dispatch) => {
-//     fetch("https://localhost:3000/api/v1/users")
+//     fetch("http://localhost:3000/api/v1/users")
 //   }
 // }
 
@@ -120,8 +120,8 @@ export const addToFavorite = (obj) => { // writing some code here lets see if it
 
 export const addToFavoriteFetch = (recipe) => { // this now has the information of the card so now we can make a fetch
   return (dispatch) => {
-    // fetch("https://localhost:3000/api/v1/recipes", {
-    fetch("https://hangry-fapoon.herokuapp.com/api/v1/recipes", {
+    // fetch("http://localhost:3000/api/v1/recipes", {
+    fetch("http://hangry-fapoon.herokuapp.com/api/v1/recipes", {
       method: "POST",
       headers: {
         "Accept" : "application/json",
@@ -152,8 +152,8 @@ export const addFriend = (info) => { // writing some code here lets see if it wo
 
 export const addFriendFetch = (info) => {
   return (dispatch) => {
-    // fetch(`https://localhost:3000/api/v1/follows`, {
-      fetch(`https://hangry-fapoon.herokuapp.com/api/v1/follows`, {
+    // fetch(`http://localhost:3000/api/v1/follows`, {
+      fetch(`http://hangry-fapoon.herokuapp.com/api/v1/follows`, {
       method: "POST",
       headers: {
         "Content-Type" : "application/json",
@@ -184,8 +184,8 @@ export const showFriend = (userInfo) => {
 export const showFriendFetch = (userId) => {
   console.log("This is from the action printing id:", userId)
   return (dispatch) => {
-    // fetch(`https://localhost:3000/api/v1/users/${userId}`)
-    fetch(`https://hangry-fapoon.herokuapp.com/api/v1/users/${userId}`)
+    // fetch(`http://localhost:3000/api/v1/users/${userId}`)
+    fetch(`http://hangry-fapoon.herokuapp.com/api/v1/users/${userId}`)
     .then(res => res.json())
     .then(userInfo => {
       dispatch(showFriend(userInfo))
