@@ -12,7 +12,7 @@ class CategoriesContainer extends Component {
 
   componentDidMount = () => {
     // fetch("https://localhost:3000/api/v1/categories")
-    fetch("https://hangry-fapoon.herokuapp.com/api/v1/categories")
+    fetch("https://hangry-fapoon.herokuapp.com/api/v1/categories", { mode: 'no-cors' })
     .then(res => res.json())
     .then(categories => {
       this.setState({
